@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const Location = ({ item }) => {
+const Location = ({ item, location }) => {
 	return (
 		<Container>
-			<Img src={"/assets/img/adventures/" + item + ".png"} whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }} />
+			<Img src={"/assets/img/" + location + "/" + item + ".png"} loading="lazy" whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }} />
 			<Desc>
 				<Div>
 					<Text>Desert king</Text>

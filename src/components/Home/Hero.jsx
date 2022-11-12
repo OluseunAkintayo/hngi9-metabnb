@@ -48,12 +48,12 @@ const HeroContainer = styled.div`
 	display: grid;
 	grid-template-columns: 48% 50%;
 	grid-gap: 2%;
-	padding: 2rem;
+	padding: 4rem 2rem;
 	@media(max-width: 786px) {
 		display: flex;
 		flex-direction: column;
 		gap: 3rem;
-		padding: 1rem;
+		padding: 4rem 1rem;
 	}
 `;
 const Div = styled.div`
@@ -157,11 +157,11 @@ const NftsContainer = styled.div`
 	justify-content: space-around;
 	align-items: center;
 	height: 100%;
-	padding: 4rem 2rem;
+	padding: 1rem 2rem;
 	@media(max-width: 768px) {
 		flex-direction: column;
 		gap: 2rem;
-		padding: 4rem 1rem;
+		padding: 1rem;
 	}
 `;
 const NftItem = styled.div`

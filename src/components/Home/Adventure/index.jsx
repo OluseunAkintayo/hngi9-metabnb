@@ -3,13 +3,15 @@ import styled from 'styled-components';
 import Location from './Location';
 
 const Adventure = () => {
+	const places = Array.from(Array(8).keys(), n => n + 1);
+
 	return (
 		<Container>
 			<AdventureWrapper>
 				<Title>Inspiration for your next adventure</Title>
 				<Locations>
 					{
-						[1,2,3,4,5,6,7,8].map(item => <Location item={item} key={item} />)
+						places.map(item => <Location item={item} key={item} location={"adventures"} />)
 					}
 				</Locations>
 			</AdventureWrapper>

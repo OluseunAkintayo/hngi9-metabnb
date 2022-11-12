@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu } from 'react-feather';
 import Modal from './Modal';
 import { motion } from 'framer-motion';
@@ -9,22 +9,30 @@ const Header = () => {
 	const [show, setShow] = React.useState(false);
 	const toggle = () => setShow(prev => !prev);
 	const [modal, setModal] = React.useState(false);
+	const location = useLocation();
+	console.log(location.pathname);
 
 	return (
 		<React.Fragment>
 			<Container>
 				<Wrapper>
 					<LogoContainer>
-						<Logo src="/assets/img/metabnb.png" />
+						<Link to="/">
+							<Logo src="/assets/img/metabnb.png" />
+						</Link>
 					</LogoContainer>
 					<Links>
-						<Link to="/">Home</Link>
-						<Link to="/place">Place to stay</Link>
+						<Link to="/" className={ location.pathname === "/" ? "active" : ""}>Home</Link>
+						<Link to="/place" className={ location.pathname === "/place" ? "active" : ""}>Place to stay</Link>
 						<a href="#">NFTs</a>
 						<a href="#">Community</a>
 					</Links>
 					<ButtonWrapper>
-						<Button onClick={() => setModal(true)}>Connect wallet</Button>
+						<Button
+							onClick={() => setModal(true)}
+						>
+							Connect wallet
+						</Button>
 					</ButtonWrapper>
 					<MenuIcon whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
 						<Menu size="2.5rem" color="#434343" onClick={toggle} />
@@ -33,13 +41,18 @@ const Header = () => {
 			</Container>
 			<MobileMenu translate={!show ? "100%" : 0}>
 				<Links>
-					<Link to="/" onClick={() => setShow(false)}>Home</Link>
-					<Link to="/place" onClick={() => setShow(false)}>Place to stay</Link>
+					<Link to="/" className={ location.pathname === "/" ? "active" : ""} onClick={() => setShow(false)}>Home</Link>
+					<Link to="/place" className={ location.pathname === "/place" ? "active" : ""} onClick={() => setShow(false)}>Place to stay</Link>
 					<a href="#" onClick={() => setShow(false)}>NFTs</a>
 					<a href="#" onClick={() => setShow(false)}>Community</a>
 				</Links>
 				<ButtonWrapper>
-					<Button onClick={() => setModal(true)}>Connect wallet</Button>
+					<Button
+						onClick={() => setModal(true)}
+
+					>
+						Connect wallet
+					</Button>
 				</ButtonWrapper>
 			</MobileMenu>
 			<React.Fragment>
@@ -95,6 +108,9 @@ const Links = styled.div`
 			transform: scale(1.05);
 		}
 	}
+	.active {
+		color: #A02279;
+	}
 	@media(max-width: 900px) {
 		display: none;
 	}
@@ -104,7 +120,7 @@ const ButtonWrapper = styled.div`
 		display: none;
 	}
 `;
-const Button = styled.button`
+const Button = styled(motion.button)`
 	color: #FFFFFF;
 	font-size: 1rem;
 	background: linear-gradient(90deg, #A02279 11.45%, #A02279 11.45%);

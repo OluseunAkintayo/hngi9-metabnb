@@ -1,9 +1,22 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
+import Filter from './Filter';
+import Places from './Places';
 
 const Place = () => {
+	React.useEffect(() => {
+		const prev = document.title;
+		document.title = "Metabnb || Places";
+		return () => document.title = prev;
+	}, []);
 	return (
-		<div>Place</div>
+		<Container>
+			<Filter />
+			<Places />
+		</Container>
 	)
 }
 
-export default Place
+export default Place;
+
+const Container = styled.div``;

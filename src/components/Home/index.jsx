@@ -5,6 +5,12 @@ import Hero from './Hero';
 import Nfts from './Nfts';
 
 const Home = () => {
+	React.useEffect(() => {
+		const prev = document.title;
+		document.title = "Metabnb || Home";
+		return () => document.title = prev;
+	}, []);
+
 	return (
 		<Container>
 			<Hero />
