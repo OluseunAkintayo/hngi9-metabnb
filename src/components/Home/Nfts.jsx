@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Nfts = () => {
 	return (
-		<Container>
+		<Container whileInView={{ y: 0, opacity: 1 }} initial={{ y: 100, opacity: 0 }} transition={{ duration: 1 }} >
 			<Wrapper>
 				<Left>
 					<Title>Metabnb NFTs</Title>
@@ -21,7 +21,7 @@ const Nfts = () => {
 
 export default Nfts;
 
-const Container = styled.div`
+const Container = styled(motion.div)`
 	background: linear-gradient(90deg, #A02279 11.45%, #A02279 11.45%);
 `;
 const Wrapper = styled.div`
@@ -35,6 +35,7 @@ const Wrapper = styled.div`
 	@media(max-width: 768px) {
 		padding: 4rem 1rem;
 		grid-template-columns: 1fr;
+		gap: 2rem;
 	}
 `;
 const Left = styled.div`

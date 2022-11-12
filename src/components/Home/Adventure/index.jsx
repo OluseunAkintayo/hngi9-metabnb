@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components';
 import Location from './Location';
+import  { motion } from 'framer-motion';
 
 const Adventure = () => {
 	const places = Array.from(Array(8).keys(), n => n + 1);
 
 	return (
 		<Container>
-			<AdventureWrapper>
+			<AdventureWrapper whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 100 }} transition={{ duration: 2 }}>
 				<Title>Inspiration for your next adventure</Title>
 				<Locations>
 					{
@@ -22,7 +23,7 @@ const Adventure = () => {
 export default Adventure;
 
 const Container = styled.div``;
-const AdventureWrapper = styled.div`
+const AdventureWrapper = styled(motion.div)`
 	width: 100%;
 	max-width: 90rem;
 	margin: 0 auto;

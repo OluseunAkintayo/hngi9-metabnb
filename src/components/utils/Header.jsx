@@ -30,6 +30,10 @@ const Header = () => {
 					<ButtonWrapper>
 						<Button
 							onClick={() => setModal(true)}
+							// animate={{ scale: [1, 1.05, 1] }}
+							// transition={{ repeat: Infinity, duration: 1.5 }}
+							whileTap={{ scale: 0.9 }}
+							whileHover={{ scale: 1.05 }}
 						>
 							Connect wallet
 						</Button>

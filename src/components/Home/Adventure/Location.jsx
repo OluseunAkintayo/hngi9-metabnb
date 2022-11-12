@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const Location = ({ item, location }) => {
 	return (
 		<Container>
-			<Img src={"/assets/img/" + location + "/" + item + ".png"} loading="lazy" whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }} />
+			<Img src={"/assets/img/" + location + "/" + item + ".png"} loading="lazy" whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }} whileInView={{ scale: 1, opacity: 1 }} initial={{ scale: 0.5, opacity: 0 }} transition={{ duration: 0.3 }} viewport={{ once: true }} />
 			<Desc>
 				<Div>
 					<Text>Desert king</Text>

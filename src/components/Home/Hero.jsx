@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React from 'react'
 import styled from 'styled-components';
 
@@ -6,23 +7,22 @@ const Hero = () => {
 		<React.Fragment>
 			<HeroContainer>
 				<Div>
-					<HeroText>
+					<HeroText animate={{ x: 0, opacity: 1 }} initial={{ x: -100, opacity: 0 }} transition={{ duration: 1 }}>
 						Rent a <span>Place</span> away from <br /> <span>Home</span> in the <span>Metaverse</span>
 					</HeroText>
-					<SubText>
+					<SubText animate={{ x: 0, opacity: 1 }} initial={{ x: -100, opacity: 0 }} transition={{ duration: 1.5 }}>
 						we provide you access to luxury and affordable houses in the metaverse, get a chance to turn your imagination to reality at your comfort zone
 					</SubText>
-					<Search>
+					<Search animate={{ x: 0, opacity: 1 }} initial={{ x: -100, opacity: 0 }} transition={{ duration: 2 }}>
 						<Input type="text" placeholder="Search for location" />
 						<Button>Search</Button>
 					</Search>
 				</Div>
-				<Div className="hero-img-container">
-					<HeroImg src="/assets/img/hero-img.png" />
+				<Div className="hero-img-container" animate={{ x: 0, opacity: 1 }} initial={{ x: 100, opacity: 0 }} transition={{ duration: 1 }}>
+					<HeroImg animate={{ y: [ 0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }} src="/assets/img/hero-img.png" />
 				</Div>
-				<Div></Div>
 			</HeroContainer>
-			<Nfts>
+			<Nfts whileInView={{ y: 0, opacity: 1 }} initial={{ y: 100, opacity: 0 }} transition={{ duration: 1 }} viewport={{ once: true }} >
 				<NftsContainer>
 					<NftItem>
 						<NftImg src="/assets/img/mbtoken.png" draggable="false" />
@@ -48,7 +48,7 @@ const HeroContainer = styled.div`
 	display: grid;
 	grid-template-columns: 48% 50%;
 	grid-gap: 2%;
-	padding: 4rem 2rem;
+	padding: 2rem;
 	@media(max-width: 786px) {
 		display: flex;
 		flex-direction: column;
@@ -56,7 +56,7 @@ const HeroContainer = styled.div`
 		padding: 4rem 1rem;
 	}
 `;
-const Div = styled.div`
+const Div = styled(motion.div)`
 	max-width: 100%;
 	&:first-child {
 		display: flex;
@@ -72,7 +72,7 @@ const Div = styled.div`
 		}
 	}
 `;
-const HeroText = styled.h2`
+const HeroText = styled(motion.h2)`
 	font-size: 3.5rem;
 	font-weight: 400;
 	line-height: 4.875rem;
@@ -97,7 +97,7 @@ const HeroText = styled.h2`
 		}
 	}
 `;
-const SubText = styled.p`
+const SubText = styled(motion.p)`
 	font-size: 1.5rem;
 	color: #434343;
 	line-height: 2.1875rem;
@@ -106,7 +106,7 @@ const SubText = styled.p`
 		line-height: 150%;
 	}
 `;
-const Search = styled.div`
+const Search = styled(motion.div)`
 	display: grid;
 	grid-template-columns: 63% 37%;
 	margin-top: 2rem;
@@ -139,14 +139,14 @@ const Button = styled.button`
 	font-size: 1rem;
 	cursor: pointer;
 `;
-const HeroImg = styled.img`
+const HeroImg = styled(motion.img)`
 	max-width: 100%;
 	max-height: 80%;
 	@media(max-width: 786px) {
 		transform: scale(0.9);
 	}
 `;
-const Nfts = styled.div`
+const Nfts = styled(motion.div)`
 	background: linear-gradient(90deg, #A02279 11.45%, #A02279 11.45%);
 	`;
 const NftsContainer = styled.div`

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React from 'react';
 import styled from 'styled-components';
 import Filter from './Filter';
@@ -10,7 +11,7 @@ const Place = () => {
 		return () => document.title = prev;
 	}, []);
 	return (
-		<Container>
+		<Container whileInView={{ y: 0, opacity: 1 }} initial={{ y: 100, opacity: 0 }} transition={{ duration: 1 }}>
 			<Filter />
 			<Places />
 		</Container>
@@ -19,4 +20,4 @@ const Place = () => {
 
 export default Place;
 
-const Container = styled.div``;
+const Container = styled(motion.div)``;
