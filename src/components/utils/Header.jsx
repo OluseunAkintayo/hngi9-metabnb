@@ -2,10 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Menu } from 'react-feather';
+import Modal from './Modal';
+import { motion } from 'framer-motion';
 
 const Header = () => {
 	const [show, setShow] = React.useState(false);
 	const toggle = () => setShow(prev => !prev);
+	const [modal, setModal] = React.useState(false);
 
 	return (
 		<React.Fragment>
@@ -21,24 +24,29 @@ const Header = () => {
 						<a href="#">Community</a>
 					</Links>
 					<ButtonWrapper>
-						<Button>Connect wallet</Button>
+						<Button onClick={() => setModal(true)}>Connect wallet</Button>
 					</ButtonWrapper>
-					<MenuIcon>
+					<MenuIcon whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
 						<Menu size="2.5rem" color="#434343" onClick={toggle} />
 					</MenuIcon>
 				</Wrapper>
 			</Container>
 			<MobileMenu translate={!show ? "100%" : 0}>
 				<Links>
-					<Link to="/">Home</Link>
-					<Link to="/place">Place to stay</Link>
-					<a href="#">NFTs</a>
-					<a href="#">Community</a>
+					<Link to="/" onClick={() => setShow(false)}>Home</Link>
+					<Link to="/place" onClick={() => setShow(false)}>Place to stay</Link>
+					<a href="#" onClick={() => setShow(false)}>NFTs</a>
+					<a href="#" onClick={() => setShow(false)}>Community</a>
 				</Links>
 				<ButtonWrapper>
-					<Button>Connect wallet</Button>
+					<Button onClick={() => setModal(true)}>Connect wallet</Button>
 				</ButtonWrapper>
 			</MobileMenu>
+			<React.Fragment>
+				{
+					modal === true && <Modal close={() => setModal(false)} />
+				}
+			</React.Fragment>
 		</React.Fragment>
 	)
 }
@@ -47,10 +55,6 @@ export default Header;
 
 const Container = styled.header`
 	height: 112px;
-	padding: 2rem;
-	@media(max-width: 768px) {
-		padding: 1rem;
-	}
 	@media(max-width: 900px) {
 		position: relative;
 		z-index: 2;
@@ -60,7 +64,15 @@ const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	height: 100%;
 	gap: 1rem;
+	width: 100%;
+	max-width: 90rem;
+	margin: 0 auto;
+	padding: 2rem;
+	@media(max-width: 768px) {
+		padding: 1rem;
+	}
 `;
 const LogoContainer = styled.div``;
 const Logo = styled.img`
@@ -107,7 +119,7 @@ const Button = styled.button`
 		opacity: 0.8;
 	}
 `;
-const MenuIcon = styled.div`
+const MenuIcon = styled(motion.div)`
 	display: none;
 	@media(max-width: 900px) {
 		display: block;

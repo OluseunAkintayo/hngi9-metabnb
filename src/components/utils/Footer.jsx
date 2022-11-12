@@ -54,19 +54,20 @@ export default Footer;
 
 const FooterWrapper = styled.footer`
 	background-color: #1D1D1E;
-	padding: 2rem;
-	@media(max-width: 768px) {
-		padding: 0.75rem;
-	}
 `;
 const Container = styled.div`
+	width: 100%;
+	max-width: 90rem;
+	margin: 0 auto;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 2rem;
+	padding: 2rem;
 	.logo {
 		gap: 3rem;
 	}
 	@media(max-width: 768px) {
+		padding: 1rem;
 		grid-template-columns: 1fr 1fr;
 	}
 `;
@@ -115,4 +116,11 @@ const LinkItem = styled.span`
 const Copyright = styled.div`
 	color: #F7F7F7;
 	padding: 2rem 0 1rem 0;
+	width: 100%;
+	max-width: 90rem;
+	margin: 0 auto;
+	padding: 2rem;
+	@media(max-width: 768px) {
+		padding: 0.75rem;
+	}
 `;
